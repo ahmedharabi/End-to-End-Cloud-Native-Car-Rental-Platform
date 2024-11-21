@@ -57,3 +57,19 @@ exports.login=async (req,res)=>{
         return res.status(500).json({message: err})
     }
 }
+
+
+
+exports.ensureAuth=async (req,res,next)=>{
+    const accessToken=req.headers.authorization;
+    if(!accessToken){
+        return res.status(401).json({message:"access token not found"});
+    }
+    try{
+        const decodedAccessToken=jwt.verify(accessToken,process.env.SECRET_KEY);
+        req.user= {id:decodedAccessToken.userId};
+        next();
+    }catch (err){
+        return res.status(401).json({message:"Access token invalid or expired"});
+    }
+}
