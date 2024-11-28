@@ -9,7 +9,12 @@ const Car=sequelize.define(
             defaultValue:Sequelize.DataTypes.UUIDV4,
             primaryKey:true
         },
-        mark:{
+        VIN:{
+            type:Sequelize.DataTypes.STRING,
+            allowNull:false
+
+        },
+        make:{
             type:Sequelize.DataTypes.STRING,
             allowNull:false
         },
@@ -23,7 +28,8 @@ const Car=sequelize.define(
         },
         rentedBy:{
             type:Sequelize.DataTypes.STRING,
-            allowNull:true
+            allowNull:true,
+            defaultValue:null
         }
     }
 )

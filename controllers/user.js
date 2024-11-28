@@ -1,5 +1,9 @@
 const User=require("../models/user");
-exports.currentUser=async (req,res)=>{
+exports.getAllUsers=async (req,res)=>{
+    const users=await User.findAll();
+    return res.status(200).json({users:users});
+}
+exports.getCurrentUser=async (req,res)=>{
 
     try{
         const user=await User.findOne({where:{id:req.user.id}});
