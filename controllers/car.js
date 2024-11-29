@@ -17,7 +17,7 @@ exports.getAllAvailableCars=async (req,res)=>{
 exports.getCar=async (req,res)=>{
     try{
     const carId=req.params.id;
-    const car=await Car.findOne({where:{id:carId}});
+    const car=await Car.findOne({where:{VIN:carId}});
     if(!car){
         return res.status(404).json({message:"There is no car with such ID"});
     }
@@ -50,7 +50,7 @@ exports.updateCar=async (req,res)=>{
     try{
         const carId=req.params.id;
         const updatedRentPrice=req.body.rentPrice;
-        const car=await Car.findOne({where:{id:carId}});
+        const car=await Car.findOne({where:{VIN:carId}});
         if(!updatedRentPrice){
             return res.status(422).json({message:"mission update attribute"});
         }
@@ -64,10 +64,10 @@ exports.updateCar=async (req,res)=>{
 exports.deleteCar=async (req,res)=>{
     try{
     const carId=req.params.id;
-    if(!await Car.findOne({where:{id:carId}})){
+    if(!await Car.findOne({where:{VIN:carId}})){
         return res.status(404).json({message:"there is no such car to delete"});
     }
-    await Car.destroy({where:{id:carId}});
+    await Car.destroy({where:{VIN:carId}});
     return res.status(200).json({message:"car deleted successfuly"});
 
 

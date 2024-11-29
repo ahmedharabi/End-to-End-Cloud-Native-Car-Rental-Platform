@@ -4,14 +4,11 @@ const Sequelize=require("sequelize");
 const Car=sequelize.define(
     "Car",
     {
-        id:{
-            type:Sequelize.DataTypes.UUID,
-            defaultValue:Sequelize.DataTypes.UUIDV4,
-            primaryKey:true
-        },
+
         VIN:{
             type:Sequelize.DataTypes.STRING,
-            allowNull:false
+            allowNull:false,
+            primaryKey:true
 
         },
         make:{

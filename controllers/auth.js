@@ -45,8 +45,8 @@ exports.login=async (req,res)=>{
         if(!passwordMatch){
             return res.status(401).json({message:"email or password is invalid"});
         }
-        const accessToken=jwt.sign({userId:user.id},process.env.SECRET_KEY,{subject:"accessApi",expiresIn: "30s"});
-        const refreshToken=jwt.sign({userId:user.id},process.env.REFRESHTOKENSECRET,{subject:"refreshToken", expiresIn: "2min"});
+        const accessToken=jwt.sign({userId:user.id},process.env.SECRET_KEY,{subject:"accessApi",expiresIn: "1h"});
+        const refreshToken=jwt.sign({userId:user.id},process.env.REFRESHTOKENSECRET,{subject:"refreshToken", expiresIn: "1w"});
         await RefreshAccessToken.create({
             userId:user.id,
             refreshToken:refreshToken

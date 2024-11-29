@@ -6,9 +6,11 @@ const RefreshAccessToken=sequelize.define(
         userId:{
             type:Sequelize.DataTypes.STRING,
             primaryKey:true
+
         },
         refreshToken:{
             type:Sequelize.DataTypes.STRING,
+            primaryKey:true
 
         }
     }
