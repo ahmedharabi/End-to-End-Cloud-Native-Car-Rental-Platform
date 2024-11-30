@@ -17,7 +17,7 @@ A RESTful API for managing a car rental service, including user authentication, 
 ## Technology Stack
 
 - **Backend**: Node.js, Express.js  
-- **Database**: Sequelize ORM with MySQL/PostgreSQL  
+- **Database**: Sequelize ORM with MySQL
 - **Authentication**: JWT-based authentication  
 - **Dev Tools**: Docker, Postman for API testing  
 
