@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: "ahmedahmed"
+      MYSQL_DATABASE: "carrent"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "ahmedahmed"
+    ports:
+      - "3307:3306"
+
+  nodeapp:
+    build: .
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_NAME: carrent
+      DB_USER: root
+      DB_PASS: ahmedahmed
+    ports:
+      - "3000:3000"
